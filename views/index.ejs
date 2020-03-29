@@ -2,6 +2,9 @@
 <html lang = "en">
 <head>
 <title>Birthday App</title>
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 <style>
     * {
@@ -26,15 +29,40 @@
     flex-direction: column;
     align-items: center;
     }
- 
-   
+
+
+
 </style>
 </head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <body>
+<div class="todo-container">
+<h2>Birthday</h2>
+<div class="todo">
+    <row>
+        
+        <form action="/newtodo" method="POST" class="todo-header">
+            <input type="text" name="item" placeholder="What is your Name?">
+            <input type="text" name="item1" placeholder="What is your Birthday Date?">
+            <button type="submit" ><span class="fas fa-plus"></span></button>
+            </form>
+    </row>
 
-<h2>Hello World</h2>
+
+<ul class="todo-list">
+    <% for(var i = 0; i < birthdayList.length; i++) { %>
+<li class="todo-list-item">
+<div class="todo-list-item-name">
+  <label for="todo1" class="checked" >  <%= (i+1) + ". " + birthdayList[i].name + " " + birthdayList[i].date %></label><br>
+
+</div>
+
+            
+</li>
+<% } %>
+</ul>
+</div>
+</div>
 
 </body>
-
-
-    </html>
+</html>

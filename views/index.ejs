@@ -34,14 +34,13 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 
 </style>
 </head>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <body>
 <div class="todo-container">
 <h2>Birthday</h2>
 <div class="todo">
     <row>
         
-        <form action="/newtodo" method="POST" class="todo-header">
+        <form action="/newtodo" method="POST" >
             <input type="text" name="item" placeholder="What is your Name?">
             <input type="text" name="item1" placeholder="What is your Birthday Date?">
             <button type="submit" ><span class="fas fa-plus"></span></button>
@@ -56,7 +55,9 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
   <label for="todo1" class="checked" >  <%= (i+1) + ". " + birthdayList[i].name + " " + birthdayList[i].date %></label><br>
 
 </div>
-
+<a href="/destroy/<%= birthdayList[i]._id %>" class="remove">
+  <span class="fas fa-times"></span>
+  </a>
             
 </li>
 <% } %>

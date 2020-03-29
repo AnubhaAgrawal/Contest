@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/todo', {
+mongoose.connect(process.env.MONODB_URI ||'mongodb://localhost/todo', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -56,7 +56,19 @@ app.post("/newtodo", function(req, res){
     res.redirect("/");
 });
 
-
+app.get('/destroy/:id', function(req, res){
+    console.log("item Deleted");
+    var mongodb = require('mongodb');
+    var delItem ={_id: new mongodb.ObjectID(req.params.id)};
+    
+    Birth.deleteOne(delItem,function(err, Todo){
+        if(err) console.log(err);
+        else{
+            console.log("Deleted Item: "+ delItem._id);
+        }
+    });
+    res.redirect("/");
+});
 
 app.get("*", function(req, res){
     res.send("<h1>Invalid Page </h1>");
